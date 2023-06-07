@@ -44,15 +44,15 @@ async def login(data: OAuth2PasswordRequestForm = Depends(), db_session: AsyncSe
     return {"access_token": access_token, "token_type": "Bearer"}
 
 
-@router.get("/private")
-def private_route(user=Depends(manager)):
-    return {"detail": f"Welcome {user}"}
-
-
-@manager.user_loader()
-@router.get("/protected")
-def protected_route(user=Depends(manager)):
-    return {"user": user}
+# @router.get("/private")
+# def private_route(user=Depends(manager)):
+#     return {"detail": f"Welcome {user}"}
+#
+#
+# @manager.user_loader()
+# @router.get("/protected")
+# def protected_route(user=Depends(manager)):
+#     return {"user": user}
 
 
 def hash_password(plaintext_password: str):
