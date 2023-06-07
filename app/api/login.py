@@ -29,6 +29,7 @@ async def register(user: UserCreate, db=Depends(get_db)):
         return db_user
 
 
+@manager.user_loader()
 @router.post("/login")
 async def login(data: OAuth2PasswordRequestForm = Depends(), db_session: AsyncSession = Depends(get_db)):
     email = data.username
