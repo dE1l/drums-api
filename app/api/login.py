@@ -29,7 +29,6 @@ async def register(user: UserCreate, db=Depends(get_db)):
         return db_user
 
 
-@manager.user_loader()
 @router.post("/login")
 async def login(data: OAuth2PasswordRequestForm = Depends(), db_session: AsyncSession = Depends(get_db)):
     email = data.username
@@ -45,9 +44,10 @@ async def login(data: OAuth2PasswordRequestForm = Depends(), db_session: AsyncSe
     return {"access_token": access_token, "token_type": "Bearer"}
 
 
-# @router.get("/private")
-# def private_route(user=Depends(manager)):
-#     return {"detail": f"Welcome {user}"}
+@manager.user_loader()
+@router.get("/check")
+def private_route(user=Depends(manager)):
+    return {"detail": f"Welcome {user}"}
 #
 #
 # @manager.user_loader()
