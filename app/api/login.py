@@ -45,15 +45,8 @@ async def login(data: OAuth2PasswordRequestForm = Depends(), db_session: AsyncSe
 
 
 @manager.user_loader()
-@router.get("/check")
-def private_route(user=Depends(manager)):
-    return {"detail": f"Welcome {user}"}
-#
-#
-# @manager.user_loader()
-# @router.get("/protected")
-# def protected_route(user=Depends(manager)):
-#     return {"user": user}
+def _get_user(user=Depends(manager)):
+    return user
 
 
 def hash_password(plaintext_password: str):
