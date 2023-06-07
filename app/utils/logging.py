@@ -1,4 +1,4 @@
-import logging
+from logging import getLogger
 
 from rich.console import Console
 from rich.logging import RichHandler
@@ -11,7 +11,7 @@ class AppLogger(metaclass=SingletonMeta):
     _logger = None
 
     def __init__(self):
-        self._logger = logging.getLogger(__name__)
+        self._logger = getLogger(__name__)
 
     def get_logger(self):
         return self._logger

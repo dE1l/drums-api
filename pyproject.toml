@@ -11,7 +11,7 @@ python = "^3.11"
 alembic = "*"
 asyncpg = "*"
 httpx = "*"
-pydantic = "*"
+pydantic = {extras = ["email"], version = "^1.10.8"}
 sqlalchemy = "*"
 fastapi = "*"
 uvicorn = { extras = ["standard"], version = "*" }
@@ -26,6 +26,8 @@ ipython = "*"
 pytest-cov = "*"
 pytest-asyncio = "*"
 ruff = "*"
+fastapi-login = "^1.9.0"
+python-multipart = "^0.0.6"
 
 [tool.poetry.group.dev.dependencies]
 tryceratops = "^1.1.0"
